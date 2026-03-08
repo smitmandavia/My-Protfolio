@@ -19,6 +19,9 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ["lucide-react"],
   },
+  env: {
+    NEXT_PUBLIC_BASE_PATH: isProduction ? `/${repoName}` : "",
+  },
 };
 
 export default nextConfig;

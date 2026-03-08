@@ -7,6 +7,7 @@ import { useInView } from "framer-motion";
 import AnimateOnScroll from "@/components/ui/AnimateOnScroll";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { aboutStats, topSkills, personal } from "@/lib/data";
+import { withBasePath } from "@/lib/utils";
 
 const skillIcons: Record<string, ComponentType<{ className?: string }>> = {
   Python: Code2,
@@ -64,7 +65,7 @@ function CountUp({ to, start, suffix }: CountUpProps) {
 export default function About() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
-  const [profileSrc, setProfileSrc] = useState("/IMG_4812.jpg");
+  const [profileSrc, setProfileSrc] = useState(() => withBasePath("/IMG_4812.jpg"));
   const skillsWithIcons = useMemo(() => topSkills.map((skill) => ({ skill, Icon: skillIcons[skill] })), []);
 
   return (
@@ -86,7 +87,7 @@ export default function About() {
                     width={280}
                     height={280}
                     priority
-                    onError={() => setProfileSrc("/profile.jpg")}
+                    onError={() => setProfileSrc(withBasePath("/profile.jpg"))}
                     className="h-full w-full object-cover"
                   />
                 </div>

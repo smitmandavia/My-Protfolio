@@ -6,6 +6,12 @@ export function cn(...inputs: ClassValue[]): string {
   return twMerge(clsx(inputs));
 }
 
+export function withBasePath(path: string): string {
+  const normalized = path.startsWith("/") ? path : `/${path}`;
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  return `${basePath}${normalized}`;
+}
+
 export const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 40 },
   visible: {

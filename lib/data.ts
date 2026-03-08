@@ -7,6 +7,7 @@ import {
   ProjectItem,
   SkillGroups,
 } from "@/lib/types";
+import { withBasePath } from "@/lib/utils";
 
 export const personal: PersonalData = {
   name: "Smit Mandavia",
@@ -218,6 +219,6 @@ export const copy: PortfolioCopy = {
     envErrorMessage: "Email service is not configured yet. Please add EmailJS environment variables.",
     privateProjectLabel: "Private Repo",
   },
-  resumePath: "/Smit_Mandavia_Complete.pdf",
+  resumePath: withBasePath("/Smit_Mandavia_Complete.pdf"),
   privateTooltip: "Private - Internal Project",
 };
